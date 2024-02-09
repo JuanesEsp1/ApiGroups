@@ -48,7 +48,7 @@ export default function Home() {
 			<header>
 				<HeaderPage/>
 			</header>
-			<main>
+			<main className="flex justify-center items-center">
 				<div className="w-full h-full flex justify-center items-center py-5 ">
 					<div className=" grid grid-cols-1  md:grid-cols-2 gap-5 ">
 						<ApiCard data={pokemon} />
