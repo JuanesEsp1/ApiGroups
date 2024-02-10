@@ -1,15 +1,15 @@
 'use client'
 import Link from 'next/link'
 import { FaCloud, FaUsers } from 'react-icons/fa'
-const BtnRoute = ({data}) => {
-   let icon;
+const BtnRoute = ({ data }) => {
+   let icon
    switch (data.icon) {
       case 'cloud':
-         icon = <FaCloud/>;
-         break;
+         icon = <FaCloud />
+         break
       case 'users':
-         icon = <FaUsers/>;
-         break;
+         icon = <FaUsers />
+         break
    }
    return (
       <Link

@@ -5,13 +5,12 @@ import Logo from '../../../public/img/Codelab.png'
 import Logo2 from '../../../public/img/Codelab2.png'
 
 const HeaderPage = () => {
-
    let apis = {
-      icon: "cloud",
-      title: "Apis",
-      route: "/",
-      renderColor: "bg-blue-500",
-      textColor: "text-blue-600"
+      icon: 'cloud',
+      title: 'Apis',
+      route: '/',
+      renderColor: 'bg-blue-500',
+      textColor: 'text-blue-600',
    }
 
    let developers = {
@@ -19,7 +18,7 @@ const HeaderPage = () => {
       title: 'Developers',
       route: 'developers',
       renderColor: 'bg-emerald-500',
-      textColor: 'text-emerald-600'
+      textColor: 'text-emerald-600',
    }
 
    return (
@@ -46,10 +45,8 @@ const HeaderPage = () => {
             </div>
             <div className="px-[20px] hidden lg:block ">
                <div className=" flex  flex-row gap-x-6 ">
-
                   <BtnRoute data={apis} />
                   <BtnRoute data={developers} />
-                  
                </div>
             </div>
          </div>

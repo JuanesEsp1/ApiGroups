@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import pokemonData from "../db/pokemon.json";
+import pokemonData from '../db/pokemon.json'
 
 const apiPokemonManager = () => {
    const [page, setPage] = useState(1)

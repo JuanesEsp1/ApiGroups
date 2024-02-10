@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import BtnCardApi from '../btns/BtnCardApi.js'
-const ApiCard = ({data}) => {
-   
-
+const ApiCard = ({ data }) => {
    return (
       <div
          className={`min-w-[300px] md:max-w-[360px] xl:max-w-[420px] rounded-2xl  ${data.colorBack} border-[2px] ${data.border} sombra`}
@@ -10,7 +8,11 @@ const ApiCard = ({data}) => {
          <div className="w-full flex flex-col md:flex-row">
             <div className="w-full md:w-1/2 flex justify-center items-center p-4">
                <div className="w-full flex justify-center items-center rounded-2xl bg-slate-800 bg-opacity-20">
-                  <Image src={data.img} width={230} alt="Picture of the author" />
+                  <Image
+                     src={data.img}
+                     width={230}
+                     alt="Picture of the author"
+                  />
                </div>
             </div>
 
