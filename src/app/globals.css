@@ -75,6 +75,10 @@
   }
 }
 
+.fondoPokemon{
+  background-image: url(../../public/img/fondosCartas/fondoPokemon.svg);
+  background-repeat: repeat;
+}
 
 header{
   width: 100% !important;

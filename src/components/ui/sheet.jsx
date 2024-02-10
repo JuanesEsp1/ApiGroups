@@ -48,7 +48,6 @@ const SheetContent = React.forwardRef(({ side = "right", className, children, ..
   <SheetPortal>
     <SheetOverlay />
     <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
-    desde aui modifico arriba
       {children}
       
       <SheetPrimitive.Close

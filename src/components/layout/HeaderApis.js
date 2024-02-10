@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { IoMenu } from 'react-icons/io5'
 import { IoIosSearch } from 'react-icons/io'
 import { Lilita_One } from 'next/font/google'
+import FormFilterPokemon from '../customs/forms/formFilterPokemon.js'
 import {
    Sheet,
    SheetContent,
@@ -38,7 +39,9 @@ const HeaderApis = ({ data }) => {
                   <SheetTrigger>
                      <IoMenu className=" text-5xl text-white " />
                   </SheetTrigger>
-                  <SheetContent>crear componente del menu aqui</SheetContent>
+                  <SheetContent>
+                       <FormFilterPokemon/> 
+                  </SheetContent>
                </Sheet>
             </div>
             <div className="hidden">
