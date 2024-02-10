@@ -6,6 +6,7 @@ import FormFilterPokemon from '../customs/forms/formFilterPokemon.js'
 import {
    Sheet,
    SheetContent,
+   SheetClose,
    SheetDescription,
    SheetHeader,
    SheetTitle,
@@ -40,7 +41,7 @@ const HeaderApis = ({ data }) => {
                      <IoMenu className=" text-5xl text-white " />
                   </SheetTrigger>
                   <SheetContent>
-                       <FormFilterPokemon/> 
+                       <FormFilterPokemon  close={SheetClose} /> 
                   </SheetContent>
                </Sheet>
             </div>
