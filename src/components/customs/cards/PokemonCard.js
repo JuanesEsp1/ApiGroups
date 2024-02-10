@@ -30,6 +30,16 @@ const PokemonCard = ({data}) =>{
                     </div>
                 </div>
             </div>
+            <div className="relative w-full">
+                <div className={`flex justify-center items-center absolute left-9 top-[-20px]  w-56  h-10 rounded-full ${typeStyle.background} ${typeStyle.text} `}>
+                    <div className={` absolute bg-slate-200 w-8 h-8 rounded-full left-1 flex justify-center items-center text-[12px] font-semibold b `}>
+                        {data.number}
+                    </div>
+                    <div className="uppercase text-xl font-bold text-slate-200">
+                        {data.name}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 
