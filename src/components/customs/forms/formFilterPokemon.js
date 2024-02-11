@@ -2,6 +2,7 @@ import { Lilita_One } from 'next/font/google'
 import BtnHome from '../btns/BtnHome'
 import BtnSearchFilter from '../btns/BtnSearchFilter'
 import apiPokemonManager from '@/hooks/apiPokemonManager.js'
+import { useForm } from "react-hook-form"
 import {
     Select,
     SelectContent,
@@ -20,6 +21,17 @@ const lilita = Lilita_One({
  })
 
 const formFilterPokemon = () =>{
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm()
+
+    const onSubmit = (data) => {
+        miPrueba(data.pokemonName,data.pokemonId,data.pokemonWeakness)
+    }
 
     let typeList =[
         "Fire",
@@ -41,11 +53,7 @@ const formFilterPokemon = () =>{
         "Flying"
     ]
 
-    typeList.forEach((type)=>{
-        console.log(typeof type)
-    })
-
-    const [miPrueba] = apiPokemonManager();
+    const [listPokemon, page, pagination, totalList, perPage, miPrueba] = apiPokemonManager();
 
     return(
             <div className="w-full h-full flex flex-col relative ">
@@ -55,31 +63,38 @@ const formFilterPokemon = () =>{
                     </div>
                 </div>
                 <div className="w-full flex flex-col justify-center items-center py-16 gap-12">
-                    <div>
-                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon name'/>
-                    </div>
-                    <div>
-                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon id'/>
-                    </div>
-                    <div>
-                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon weakness'/>
-                    </div>
-                    <div>
-                    <Select>
-                        <SelectTrigger className="w-[300px]">
-                            <SelectValue placeholder="Pokemon types" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                            <SelectLabel>Types</SelectLabel>
-
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                    </div>
-                    <div>
-                        <button onClick={()=>miPrueba} className="w-[300px] h-[40px] border-[3px] rounded">Search</button>
-                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-center items-center gap-12">
+                        <input
+                            {...register("pokemonName", { required: false })}
+                            placeholder="Pokemon name"
+                            className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
+                        />
+                        <input
+                            {...register("pokemonId", { required: false, maxLength: 4 })}
+                            placeholder="Pokemon id"
+                            className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
+                        />
+                        <input
+                            {...register("pokemonWeakness", { required: false })}
+                            placeholder="Pokemon weakness"
+                            className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
+                        />
+                        <div>
+                        <Select>
+                            <SelectTrigger className="w-[300px]">
+                                <SelectValue placeholder="Pokemon types" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                <SelectLabel>Types</SelectLabel>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                        </div>
+                        <div>
+                            <button  type="submit" className="w-[300px] h-[40px] border-[3px] rounded">Search</button>
+                        </div>
+                    </form>
                 </div>
                 <div className="w-full h-16 absolute bottom-0 left-0 flex justify-center items-center">
                     <div className='w-[300px] flex justify-center items-center text-[30px]'>
@@ -91,3 +106,16 @@ const formFilterPokemon = () =>{
 }
 
 export default formFilterPokemon
+
+/*
+                    <div>
+                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon name'/>
+                    </div>
+                    <div>
+                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon id'/>
+                    </div>
+                    <div>
+                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon weakness'/>
+                    </div>
+
+*/

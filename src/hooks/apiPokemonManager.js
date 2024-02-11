@@ -14,8 +14,10 @@ const apiPokemonManager = () => {
 
    const totalList = pokemonData.length
 
-   const miPrueba = () =>{
-      console.log("soy la prueba");
+   const miPrueba = (name,id,weakness) =>{
+      console.log(name)
+      console.log(id)
+      console.log(weakness)
    }
 
    return [listPokemon, page, pagination, totalList, perPage, miPrueba]
