@@ -1,5 +1,7 @@
 import { Lilita_One } from 'next/font/google'
-import { BsFillHouseDoorFill } from "react-icons/bs";
+import BtnHome from '../btns/BtnHome'
+import BtnSearchFilter from '../btns/BtnSearchFilter'
+import apiPokemonManager from '@/hooks/apiPokemonManager.js'
 import {
     Select,
     SelectContent,
@@ -9,7 +11,7 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
-import pokemon from '@/app/pokemon/page'
+
 
 const lilita = Lilita_One({
     subsets: ['latin'],
@@ -40,8 +42,10 @@ const formFilterPokemon = () =>{
     ]
 
     typeList.forEach((type)=>{
-        console.log(type)
+        console.log(typeof type)
     })
+
+    const [miPrueba] = apiPokemonManager();
 
     return(
             <div className="w-full h-full flex flex-col relative ">
@@ -61,24 +65,25 @@ const formFilterPokemon = () =>{
                         <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon weakness'/>
                     </div>
                     <div>
-                        <Select>
-                            <SelectTrigger className="w-[300px] h-[40px] rounded">
-                                <SelectValue placeholder="Pokemon type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                            </SelectContent>
-                        </Select>
+                    <Select>
+                        <SelectTrigger className="w-[300px]">
+                            <SelectValue placeholder="Pokemon types" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                            <SelectLabel>Types</SelectLabel>
+
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
                     </div>
                     <div>
-                        <button className="w-[300px] h-[40px] border-[3px] rounded">Search</button>
+                        <button onClick={()=>miPrueba} className="w-[300px] h-[40px] border-[3px] rounded">Search</button>
                     </div>
                 </div>
                 <div className="w-full h-16 absolute bottom-0 left-0 flex justify-center items-center">
                     <div className='w-[300px] flex justify-center items-center text-[30px]'>
-                        <button className='flex justify-center items-center gap-2'>
-                            Go to home
-                            <BsFillHouseDoorFill className='w-[30px]'/>
-                        </button>
+                        <BtnHome />
                     </div>
                 </div>
             </div>
