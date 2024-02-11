@@ -30,7 +30,7 @@ const formFilterPokemon = () =>{
       } = useForm()
 
     const onSubmit = (data) => {
-        miPrueba(data.pokemonName,data.pokemonId,data.pokemonWeakness)
+        FilterId(data.pokemonId)
     }
 
     let typeList =[
@@ -53,7 +53,8 @@ const formFilterPokemon = () =>{
         "Flying"
     ]
 
-    const [listPokemon, page, pagination, totalList, perPage, miPrueba] = apiPokemonManager();
+    const [listPokemon, page, pagination, totalList, perPage, FilterId, filterName] = apiPokemonManager();
+    
 
     return(
             <div className="w-full h-full flex flex-col relative ">

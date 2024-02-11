@@ -14,7 +14,7 @@ const pokemon = () => {
       headerName: 'Pokemon',
       colorBack: 'bg-red-500',
    }
-
+   console.log(listPokemon)
    return (
       <>
          <HeaderApi data={Pokemon} />
