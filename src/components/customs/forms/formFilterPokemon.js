@@ -1,7 +1,7 @@
 import { Lilita_One } from 'next/font/google'
 import BtnHome from '../btns/BtnHome'
 import BtnSearchFilter from '../btns/BtnSearchFilter'
-import apiPokemonManager from '@/hooks/apiPokemonManager.js'
+import apiPokemonManager from '@/hooks/usePokemonManager.js'
 import { useForm } from "react-hook-form"
 import {
     Select,
