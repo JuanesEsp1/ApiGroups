@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 const pokemon = () => {
   // const [listPokemon, page, pagination, totalList, perPage, filterId, filterName] = usePokemonManager()
 
-   const [listPokemons, filterName,pokemonFilterByName,filterId,filterWeakness] = usePokemonManager()
+   const [listPokemons, filterName,pokemonFilterByName,filterId,filterWeakness, page, pagination, PokemonsPerPage, totalList] = usePokemonManager()
 
    useEffect(() => {
       filterWeakness('fuego')
@@ -36,14 +36,14 @@ const pokemon = () => {
                </div>
             </div>
             <div className="w-full flex justify-normal items-center p-7">
-               {/*
+               {
                <BtnPagination
                   page={page}
                   totalList={totalList}
-                  perPage={perPage}
+                  perPage={PokemonsPerPage}
                   pagination={pagination}
                />
-               */}
+               }
             </div>
          </main>
       </>

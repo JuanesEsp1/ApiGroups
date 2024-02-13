@@ -1,14 +1,24 @@
 'use client'
 import {  useEffect, useState } from 'react'
 import DataGeneralPokemons from '../db/pokemon.json'
-import { list } from 'postcss';
-
 
 const apiPokemonManager = () => {
 
    const [pokemonsData, setPokemonsData] = useState(DataGeneralPokemons);
-   const [listPokemons, setListPokemons] = useState([])
-   const [pokemonFilterByName, setPokemonFilterByName] = useState([])
+   const [listPokemons, setListPokemons] = useState([]);
+   const [totalList, setTotalList] = useState()
+   const [page, setPage] = useState(1);
+   const [PokemonsPerPage, setPokemonsPerPage] = useState(20);
+   
+   useEffect(() => {
+      const lastPokemon = page * PokemonsPerPage
+      const firstPokemon = lastPokemon - PokemonsPerPage
+      const slicePokemon = pokemonsData.slice(firstPokemon,lastPokemon)
+      setListPokemons(slicePokemon)
+      setTotalList(DataGeneralPokemons.length)
+      const pagination = (page) => setPage(page);
+   },[listPokemons])
+
 
    const filterName = (name) => {
 
@@ -31,6 +41,11 @@ const apiPokemonManager = () => {
       })
       setListPokemons(filteredPokemon)
    } 
+
+   return [listPokemons, filterName, filterId, filterWeakness, page, pagination, PokemonsPerPage, totalList]
+}
+
+export default apiPokemonManager
 
 /*
    const [page, setPage] = useState(1)
@@ -66,8 +81,4 @@ const apiPokemonManager = () => {
 
 
    return [listPokemon, page, pagination, totalList, perPage, filterId, filterName]
-   */
-   return [listPokemons,filterName,pokemonFilterByName,filterId,filterWeakness]
-}
-
-export default apiPokemonManager
+*/
