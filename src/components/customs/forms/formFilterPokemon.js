@@ -1,8 +1,10 @@
 import { Lilita_One } from 'next/font/google'
 import BtnHome from '../btns/BtnHome'
 import BtnSearchFilter from '../btns/BtnSearchFilter'
-import apiPokemonManager from '@/hooks/usePokemonManager.js'
+import usePokemonManager from '@/hooks/usePokemonManager.js'
+import usePaginationDate from '@/hooks/usePaginatioDate.js'
 import { useForm } from "react-hook-form"
+
 import {
     Select,
     SelectContent,
@@ -12,6 +14,7 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
+
 
 
 const lilita = Lilita_One({
@@ -30,7 +33,9 @@ const formFilterPokemon = () =>{
       } = useForm()
 
     const onSubmit = (data) => {
-        FilterId(data.pokemonId)
+        filterId(data.pokemonId)
+        filterName(data.pokemonName)
+       
     }
 
     let typeList =[
@@ -53,8 +58,10 @@ const formFilterPokemon = () =>{
         "Flying"
     ]
 
-    const [listPokemon, page, pagination, totalList, perPage, FilterId, filterName] = apiPokemonManager();
-    
+    //const [listPokemon, page, pagination, totalList, perPage, FilterId, filterName] = apiPokemonManager();
+    const [listData, setArrayData, pagination, page, totalList,perPage] = usePaginationDate()
+    const { listPokemons, filterId, filterName, filterType,showAll } = usePokemonManager()
+
 
     return(
             <div className="w-full h-full flex flex-col relative ">

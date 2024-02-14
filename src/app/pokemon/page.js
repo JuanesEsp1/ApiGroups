@@ -2,27 +2,30 @@
 import LogoPokemon from '../../../public/img/logosHeaders/pokeball.svg'
 import HeaderApi from '../../components/layout/HeaderApis.js'
 import Cards from '../../components/customs/cards/PokemonCard.js'
-import usePokemonManager from '@/hooks/usePokemonManager'
+import usePokemonManager from '@/hooks/usePokemonManager.js'
+import usePaginationDate from '@/hooks/usePaginatioDate.js'
 import BtnPagination from '@/components/customs/btns/BtnPagination'
 import { useEffect } from 'react'
 
+
 const pokemon = () => {
-  // const [listPokemon, page, pagination, totalList, perPage, filterId, filterName] = usePokemonManager()
 
-   const [listPokemons, filterName,pokemonFilterByName,filterId,filterWeakness, page, pagination, PokemonsPerPage, totalList] = usePokemonManager()
-
-   useEffect(() => {
-      filterWeakness('fuego')
-   },[])
-   
-
-
+   const { listPokemons, filterId, filterName, filterType, showAll } = usePokemonManager();
+   const [listData,setArrayData,pagination,page,totalList,perPage] = usePaginationDate();
    
    let Pokemon = {
       img: LogoPokemon,
       headerName: 'Pokemon',
       colorBack: 'bg-red-500',
    }
+
+   useEffect(() => {
+      console.log(listPokemons)
+      setArrayData(listPokemons)
+   },[listPokemons])
+
+   
+  
    
    return (
       <>
@@ -30,9 +33,18 @@ const pokemon = () => {
          <main>
             <div className="w-full min-h-[calc(100vh-80px)] flex justify-center items-center py-5 ">
                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 xl:grid-cols-3 2xl:grid-cols-4 gap-5  ">
-                  {listPokemons.map((pokemon, index) => {
+
+                  {
+                     listData.map((pokemon, index) => {
+                        return <Cards key={index} data={pokemon} />
+                     })
+                  }
+
+                  
+
+                  {/*listPokemons.map((pokemon, index) => {
                      return <Cards key={index} data={pokemon} />
-                  })}
+                  })*/}
                </div>
             </div>
             <div className="w-full flex justify-normal items-center p-7">
@@ -40,7 +52,7 @@ const pokemon = () => {
                <BtnPagination
                   page={page}
                   totalList={totalList}
-                  perPage={PokemonsPerPage}
+                  perPage={perPage}
                   pagination={pagination}
                />
                }
@@ -51,3 +63,7 @@ const pokemon = () => {
 }
 
 export default pokemon
+
+/*
+<div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 xl:grid-cols-3 2xl:grid-cols-4 gap-5  ">
+*/
