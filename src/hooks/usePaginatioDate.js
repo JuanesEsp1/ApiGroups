@@ -13,7 +13,7 @@ const usePaginationDate = () => {
     const totalList = arrayData.length;
    
 
-    return [listData, setArrayData, pagination,page, totalList,perPage];
+    return [listData, setArrayData, pagination,page, totalList, perPage, setPage];
 }
  
 export default usePaginationDate;

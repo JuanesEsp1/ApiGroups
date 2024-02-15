@@ -23,7 +23,8 @@ const lilita = Lilita_One({
     display: 'swap',
  })
 
-const formFilterPokemon = () =>{
+const formFilterPokemon = ({getFilterId, getFilterName}) =>{
+
 
     const {
         register,
@@ -33,9 +34,11 @@ const formFilterPokemon = () =>{
       } = useForm()
 
     const onSubmit = (data) => {
-        filterId(data.pokemonId)
-        filterName(data.pokemonName)
+        
        
+        getFilterId(data.pokemonId) 
+        getFilterName(data.pokemonName) 
+        
     }
 
     let typeList =[

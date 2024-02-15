@@ -8,7 +8,8 @@ const apiPokemonManager = () => {
    const [listPokemons, setListPokemons] = useState(PokemonData);
 
    const filterId = (id) => {
-      let filtered = PokemonData.filter((pokemon) => pokemon.id === id)
+      let filtered = PokemonData.filter((pokemon) => pokemon.id.toString() === id)
+      console.log(filtered)
       setListPokemons(filtered)
    }
 
@@ -17,13 +18,13 @@ const apiPokemonManager = () => {
       let filtered = PokemonData.filter((pokemon) => pokemon.name.toLowerCase() === lowercase)
       setListPokemons(filtered)
    }
-/*
+
    const filterWeakness = (weakness) => {
       let lowercase = weakness.toLowerCase()
       let filtered = PokemonData.filter((pokemon) => pokemon.weakness.toLowerCase() === lowercase)
       setListPokemons(filtered)
    }
-*/
+
    const filterType = (type) => {
       console.log(type)
       let lowercase = type.toLowerCase()
@@ -37,7 +38,7 @@ const apiPokemonManager = () => {
       setListPokemons(PokemonData)
    }
 
-   return {listPokemons, filterId, filterName, filterType, showAll }
+   return {listPokemons, filterId, filterName, filterType, filterWeakness, showAll}
    
 }
 
