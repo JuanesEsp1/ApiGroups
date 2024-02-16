@@ -5,10 +5,12 @@ import Cards from '../../components/customs/cards/PokemonCard.js'
 import usePokemonManager from '@/hooks/usePokemonManager.js'
 import usePaginationDate from '@/hooks/usePaginatioDate.js'
 import BtnPagination from '@/components/customs/btns/BtnPagination'
+
 import { useEffect } from 'react'
 
 
 const pokemon = () => {
+   
 
    const { listPokemons, filterId, filterName, filterType, filterWeakness,showAll} = usePokemonManager();
    const [listData,setArrayData,pagination,page,totalList,perPage] = usePaginationDate();

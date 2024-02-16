@@ -4,6 +4,9 @@ import BtnSearchFilter from '../btns/BtnSearchFilter'
 import usePokemonManager from '@/hooks/usePokemonManager.js'
 import usePaginationDate from '@/hooks/usePaginatioDate.js'
 import { useForm } from "react-hook-form"
+import { useContext } from 'react'
+import { ThemeContext } from '@/context/themeContext'
+import useStore from '@/context/loginContext.js'
 
 import {
     Select,
@@ -24,7 +27,10 @@ const lilita = Lilita_One({
  })
 
 const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
-
+    const {theme, setTheme} = useContext(ThemeContext)
+    console.log(theme)
+    const {logged} = useStore()
+    console.log(logged)
 
     const {
         register,
