@@ -23,7 +23,7 @@ const lilita = Lilita_One({
     display: 'swap',
  })
 
-const formFilterPokemon = ({getFilterId, getFilterName}) =>{
+const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
 
 
     const {
@@ -33,12 +33,16 @@ const formFilterPokemon = ({getFilterId, getFilterName}) =>{
         formState: { errors },
       } = useForm()
 
-    const onSubmit = (data) => {
-        
-       
-        getFilterId(data.pokemonId) 
+    const onSubmitName = (data) => {
         getFilterName(data.pokemonName) 
-        
+    }
+
+    const onSubmitId = (data) =>{
+        getFilterId(data.pokemonId)
+    }
+
+    const onSubmitWeakness = (data) =>{
+        getFilterWeakness(data.pokemonWeakness)
     }
 
     let typeList =[
@@ -73,24 +77,38 @@ const formFilterPokemon = ({getFilterId, getFilterName}) =>{
                         FILTER YOUR POKEMON 
                     </div>
                 </div>
-                <div className="w-full flex flex-col justify-center items-center py-16 gap-12">
-                    <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-center items-center gap-12">
+                <div className="w-full flex flex-col justify-center items-center py-16 gap-9">
+                    <form onSubmit={handleSubmit(onSubmitName)} className="w-full flex flex-col justify-center items-center gap-4">
                         <input
                             {...register("pokemonName", { required: false })}
                             placeholder="Pokemon name"
                             className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
                         />
+                        <div>
+                            <button  type="submit" className="w-[150px] h-[40px] border-[3px] rounded">Search</button>
+                        </div>
+                    </form>
+                    <form onSubmit={handleSubmit(onSubmitId)} className="w-full flex flex-col justify-center items-center gap-4">
                         <input
                             {...register("pokemonId", { required: false, maxLength: 4 })}
                             placeholder="Pokemon id"
                             className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
                         />
+                        <div>
+                            <button  type="submit" className="w-[150px] h-[40px] border-[3px] rounded">Search</button>
+                        </div>
+                    </form>
+                    <form onSubmit={handleSubmit(onSubmitWeakness)} className="w-full flex flex-col justify-center items-center gap-4">
                         <input
                             {...register("pokemonWeakness", { required: false })}
                             placeholder="Pokemon weakness"
                             className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
                         />
                         <div>
+                            <button  type="submit" className="w-[150px] h-[40px] border-[3px] rounded">Search</button>
+                        </div>
+                    </form>    
+                    <div>
                         <Select>
                             <SelectTrigger className="w-[300px]">
                                 <SelectValue placeholder="Pokemon types" />
@@ -101,11 +119,7 @@ const formFilterPokemon = ({getFilterId, getFilterName}) =>{
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
-                        </div>
-                        <div>
-                            <button  type="submit" className="w-[300px] h-[40px] border-[3px] rounded">Search</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
                 <div className="w-full h-16 absolute bottom-0 left-0 flex justify-center items-center">
                     <div className='w-[300px] flex justify-center items-center text-[30px]'>

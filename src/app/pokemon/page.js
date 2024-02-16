@@ -29,7 +29,7 @@ const pokemon = () => {
    
    return (
       <>
-         <HeaderApi data={Pokemon} getFilterId={filterId} getFilterName={filterName} getFilterWakness={filterWeakness} />
+         <HeaderApi data={Pokemon} getFilterId={filterId} getFilterName={filterName} getFilterWeakness={filterWeakness} />
          <main>
             <div className="w-full min-h-[calc(100vh-80px)] flex justify-center items-center py-5 ">
                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-10 xl:grid-cols-3 2xl:grid-cols-4 gap-5  ">
