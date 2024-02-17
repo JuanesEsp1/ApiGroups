@@ -6,7 +6,9 @@ import usePaginationDate from '@/hooks/usePaginatioDate.js'
 import { useForm } from "react-hook-form"
 import { useContext } from 'react'
 import { ThemeContext } from '@/context/themeContext'
+import { LanguageContext } from '@/context/languageContext.js'
 import useStore from '@/context/loginContext.js'
+import idiomContext from '@/context/exampleContext.js'
 
 import {
     Select,
@@ -27,10 +29,10 @@ const lilita = Lilita_One({
  })
 
 const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
-    const {theme, setTheme} = useContext(ThemeContext)
-    console.log(theme)
-    const {logged} = useStore()
-    console.log(logged)
+    //const {language, setLanguage} = useContext(LanguageContext)
+    //console.log(language)
+    const {language} = idiomContext()
+    console.log(language)
 
     const {
         register,
