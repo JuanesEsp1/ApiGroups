@@ -22,7 +22,9 @@ const apiPokemonManager = () => {
    const filterWeakness = (weakness) => {
       console.log(weakness)
       let lowercase = weakness.toLowerCase()
-      let filtered = PokemonData.filter((pokemon) => pokemon.weakness.toString().toLowerCase() === lowercase)
+      let filtered = PokemonData.filter((pokemon) => 
+         pokemon.weakness.some((t) => t.toLowerCase() === lowercase),
+      )
       setListPokemons(filtered)
    }
 

@@ -12,7 +12,6 @@ const usePaginationDate = () => {
     const pagination = (page) => setPage(page)
     const totalList = arrayData.length;
    
-
     return [listData, setArrayData, pagination,page, totalList, perPage, setPage];
 }
  
