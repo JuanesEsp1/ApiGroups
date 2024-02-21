@@ -80,6 +80,11 @@
   background-repeat: repeat;
 }
 
+.fondoDragonBall{
+  background-image: url(../../public/img/fondosCartas/DragonBallFondo.png);
+  background-repeat: repeat;
+}
+
 header{
   width: 100% !important;
   height: 80px !important;
@@ -88,11 +93,12 @@ header{
   top: 0;
   left: 0;
 }
+
 main{
   width: 100% !important;
   min-height: 100vh !important;
   background-color: rgba(247, 247, 247, 0.6);
-  padding-top: 80px;
+  padding-top: 20px;
 }
 
 .btn {
