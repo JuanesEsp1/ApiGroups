@@ -11,6 +11,7 @@ import jiren from "../../../../public/img/fondosCartas/dragonBall/jiren.jpg"
 import unknown from "../../../../public/img/fondosCartas/dragonBall/unknown.jpg"
 import evil from "../../../../public/img/fondosCartas/dragonBall/evil.jpg"
 import majin from "../../../../public/img/fondosCartas/dragonBall/Majin.jpg"
+import nucleico from "../../../../public/img/fondosCartas/dragonBall/nucleico.webp"
 import { Fullscreen } from 'lucide-react'
 
 const DragonBallCard = ({ data }) => {
@@ -21,7 +22,7 @@ const DragonBallCard = ({ data }) => {
    switch (data.race) {
       case "Majin":
          backgrounTotal = majin;
-         colorCard = "bg-[rgb(247,59,59)]"
+         colorCard = "bg-[rgb(241,127,182)]"
          break;
       case "Evil":
          backgrounTotal = evil;
@@ -33,7 +34,7 @@ const DragonBallCard = ({ data }) => {
          break;
       case "Jiren Race":
          backgrounTotal = jiren;
-         colorCard = "bg-[rgb(247,59,59)]"
+         colorCard = "bg-slate-400"
          break;
       case "Majin":
          colorCard = "bg-[rgb(241,127,182)]"
@@ -60,7 +61,7 @@ const DragonBallCard = ({ data }) => {
          break;
       case "Nucleico benigno":
          backgrounTotal = nucleico_benigno;
-         colorCard = "bg-[rgb(241,127,182)]"
+         colorCard = "bg-[rgb(255,14,245)]"
          break;
       case "Saiyan":
          backgrounTotal = saiyan;
@@ -69,6 +70,10 @@ const DragonBallCard = ({ data }) => {
       case "Angel":
          backgrounTotal = god;
          colorCard = "bg-[rgb(124,170,203)]"
+         break;
+      case "Nucleico":
+         backgrounTotal = nucleico;
+         colorCard = "bg-[]"
          break;
    
       default:

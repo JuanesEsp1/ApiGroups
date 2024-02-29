@@ -5,6 +5,7 @@ import BtnPagination from '@/components/customs/btns/BtnPagination'
 import DragonBallCard from '@/components/customs/cards/DragonBallCard'
 import { useEffect, useState } from 'react'
 import BtnPaginationDragon from '@/components/customs/btns/BtnPaginationDragon.js'
+import { BsChevronDoubleLeft,BsChevronDoubleRight } from "react-icons/bs";
 
 const dragonBall = () => {
    let dragonBall = {
@@ -57,8 +58,13 @@ const dragonBall = () => {
 						}
                </div>
             </div>
-            <div className="w-full flex justify-normal items-center p-7">
-              <button onClick={()=>setUrl(page.next)} >cambio pagina</button>
+            <div className="w-full flex justify-center items-center p-7 gap-x-10 flex-row ">
+               <button className='bg-slate-600 text-slate-100 text-4xl p-1 rounded-lg ' onClick={() => setUrl(page.previous)} >
+                  <BsChevronDoubleLeft className='' />
+               </button>
+               <button className='bg-slate-600 text-slate-100 text-4xl p-1 rounded-lg' onClick={() => setUrl(page.next)}>
+                  <BsChevronDoubleRight />
+               </button>
             </div>
          </main>
       </>
