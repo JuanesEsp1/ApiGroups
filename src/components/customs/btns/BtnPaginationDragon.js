@@ -11,7 +11,7 @@ import {
    PaginationPrevious,
 } from '@/components/ui/pagination'
 //
-const BtnPaginationDragon = ({page, pagination/*,totalList, perPage*/   }) => {
+const BtnPaginationDragon = ({ page, pagination /*,totalList, perPage*/ }) => {
    return (
       <>
          <Pagination>
