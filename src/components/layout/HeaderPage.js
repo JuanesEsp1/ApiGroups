@@ -2,8 +2,8 @@ import BtnRoute from '../customs/btns/BtnRoute.js'
 import { IoMenu } from 'react-icons/io5'
 import Image from 'next/image'
 import Logo from '../../../public/img/Codelab.png'
-import codelabLogo2 from "../../../public/img/codelabLogo.svg"
-import codelab from "../../../public/img/codelab.svg"
+import codelabLogo2 from '../../../public/img/codelabLogo.svg'
+import codelab from '../../../public/img/codelab.svg'
 
 const HeaderPage = () => {
    let apis = {

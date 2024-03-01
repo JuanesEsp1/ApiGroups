@@ -1,7 +1,7 @@
 import useTypePokemons from '@/hooks/useTypePokemon'
 import PokemonLogo from '../../../../public/img/fondosCartas/PokemonLogo.webp'
 import Image from 'next/image'
-import fondoPokemon from "../../../../public/img/fondosCartas/fondoPokemon.svg";
+import fondoPokemon from '../../../../public/img/fondosCartas/fondoPokemon.svg'
 
 const PokemonCard = ({ data }) => {
    const typeStyle = useTypePokemons(data.type[0])
@@ -13,11 +13,15 @@ const PokemonCard = ({ data }) => {
                <div>
                   <Image className="w-[70px]" src={PokemonLogo} alt="" />
                </div>
-               <div className={`uppercase flex justify-center items-center w-20 ${typeStyle.background} font-semibold text-slate-100 text-[14px] rounded-full`}>
+               <div
+                  className={`uppercase flex justify-center items-center w-20 ${typeStyle.background} font-semibold text-slate-100 text-[14px] rounded-full`}
+               >
                   {data.type[0]}
                </div>
             </div>
-            <div className={`flex justify-center items-center min-w[300px] max-w-[360px] h-[200px] ${typeStyle.background} bg-opacity-[0.3] rounded-t-[20px]`}>
+            <div
+               className={`flex justify-center items-center min-w[300px] max-w-[360px] h-[200px] ${typeStyle.background} bg-opacity-[0.3] rounded-t-[20px]`}
+            >
                <div className="w-40">
                   <Image
                      width={160}
@@ -29,8 +33,12 @@ const PokemonCard = ({ data }) => {
             </div>
          </div>
          <div className="relative w-full">
-            <div className={`flex justify-center items-center absolute left-9 top-[-20px]  w-56  h-10 rounded-full ${typeStyle.background} ${typeStyle.text} `}>
-               <div className={` absolute bg-slate-200 w-8 h-8 rounded-full left-1 flex justify-center items-center text-[12px] font-semibold b`}>
+            <div
+               className={`flex justify-center items-center absolute left-9 top-[-20px]  w-56  h-10 rounded-full ${typeStyle.background} ${typeStyle.text} `}
+            >
+               <div
+                  className={` absolute bg-slate-200 w-8 h-8 rounded-full left-1 flex justify-center items-center text-[12px] font-semibold b`}
+               >
                   {data.number}
                </div>
                <div className="uppercase text-xl font-bold text-slate-200">
@@ -38,10 +46,16 @@ const PokemonCard = ({ data }) => {
                </div>
             </div>
          </div>
-         <div className={`w-full flex justify-center items-center ${typeStyle.background2} pt-9 pb-5 rounded-b-[20px]`}>
-            <div className={`flex justify-center items-center border-[3px] rounded-3xl ${typeStyle.border} `}>
+         <div
+            className={`w-full flex justify-center items-center ${typeStyle.background2} pt-9 pb-5 rounded-b-[20px]`}
+         >
+            <div
+               className={`flex justify-center items-center border-[3px] rounded-3xl ${typeStyle.border} `}
+            >
                <div className="flex justify-between items-center gap-10 font-bold py-5 px-3 ">
-                  <div className={`uppercase flex flex-col gap-y-1 items-center ${typeStyle.text} `}>
+                  <div
+                     className={`uppercase flex flex-col gap-y-1 items-center ${typeStyle.text} `}
+                  >
                      <div>weakness</div>
                      <div>abilities</div>
                      <div>weight</div>
