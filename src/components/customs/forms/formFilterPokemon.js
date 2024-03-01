@@ -5,22 +5,8 @@ import usePokemonManager from '@/hooks/usePokemonManager.js'
 import usePaginationDate from '@/hooks/usePaginatioDate.js'
 import { useForm } from "react-hook-form"
 import { useContext } from 'react'
-import { ThemeContext } from '@/context/themeContext'
-import { LanguageContext } from '@/context/languageContext.js'
-import useStore from '@/context/loginContext.js'
-import idiomContext from '@/context/exampleContext.js'
-
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select"
-
-
+import { ThemeContext } from '@/context/themeContext.js'
+import { FaSearch } from "react-icons/fa";
 
 const lilita = Lilita_One({
     subsets: ['latin'],
@@ -28,11 +14,7 @@ const lilita = Lilita_One({
     display: 'swap',
  })
 
-const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
-    //const {language, setLanguage} = useContext(LanguageContext)
-    //console.log(language)
-    const {language} = idiomContext()
-    console.log(language)
+const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness, getFilterType, showAll}) =>{
 
     const {
         register,
@@ -51,6 +33,14 @@ const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
 
     const onSubmitWeakness = (data) =>{
         getFilterWeakness(data.pokemonWeakness)
+    }
+
+    const onSubmitType = (data) =>{
+        getFilterType(data.pokemonType)
+    }
+
+    const onSubmitReset = () =>{
+        showAll()
     }
 
     let typeList =[
@@ -72,12 +62,6 @@ const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
         "Ghost",
         "Flying"
     ]
-
-    //const [listPokemon, page, pagination, totalList, perPage, FilterId, filterName] = apiPokemonManager();
-    const [listData, setArrayData, pagination, page, totalList,perPage] = usePaginationDate()
-    const { listPokemons, filterId, filterName, filterType,showAll } = usePokemonManager()
-
-
     return(
             <div className="w-full h-full flex flex-col relative ">
                 <div className="w-full">
@@ -86,48 +70,49 @@ const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
                     </div>
                 </div>
                 <div className="w-full flex flex-col justify-center items-center py-16 gap-9">
-                    <form onSubmit={handleSubmit(onSubmitName)} className="w-full flex flex-col justify-center items-center gap-4">
+                    <form onSubmit={handleSubmit(onSubmitName)} className="w-full flex flex-row justify-center items-center pl-4">
                         <input
                             {...register("pokemonName", { required: false })}
                             placeholder="Pokemon name"
                             className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
                         />
-                        <div>
-                            <button  type="submit" className="w-[150px] h-[40px] border-[3px] rounded">Search</button>
-                        </div>
+                        <button  type="submit" className="w-[50px] h-[40px] flex justify-center items-center">
+                            <FaSearch className="h-[40px] w-[20px] text-slate-500 hover:text-slate-950"/>
+                        </button>
                     </form>
-                    <form onSubmit={handleSubmit(onSubmitId)} className="w-full flex flex-col justify-center items-center gap-4">
+                    <form onSubmit={handleSubmit(onSubmitId)} className="w-full flex flex-row justify-center items-center pl-4">
                         <input
                             {...register("pokemonId", { required: false, maxLength: 4 })}
                             placeholder="Pokemon id"
                             className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
                         />
-                        <div>
-                            <button  type="submit" className="w-[150px] h-[40px] border-[3px] rounded">Search</button>
-                        </div>
+                        <button  type="submit" className="w-[50px] h-[40px] flex justify-center items-center">
+                            <FaSearch className="h-[40px] w-[20px] text-slate-500 hover:text-slate-950"/>
+                        </button>
                     </form>
-                    <form onSubmit={handleSubmit(onSubmitWeakness)} className="w-full flex flex-col justify-center items-center gap-4">
+                    <form onSubmit={handleSubmit(onSubmitWeakness)} className="w-full flex flex-row justify-center items-center pl-4">
                         <input
                             {...register("pokemonWeakness", { required: false })}
                             placeholder="Pokemon weakness"
                             className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
                         />
-                        <div>
-                            <button  type="submit" className="w-[150px] h-[40px] border-[3px] rounded">Search</button>
-                        </div>
-                    </form>    
-                    <div>
-                        <Select>
-                            <SelectTrigger className="w-[300px]">
-                                <SelectValue placeholder="Pokemon types" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                <SelectLabel>Types</SelectLabel>
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
-                    </div>
+                        <button  type="submit" className="w-[50px] h-[40px] flex justify-center items-center">
+                            <FaSearch className="h-[40px] w-[20px] text-slate-500 hover:text-slate-950"/>
+                        </button>
+                    </form>  
+                    <form onSubmit={handleSubmit(onSubmitType)} className="w-full flex flex-row justify-center items-center pl-4">
+                        <input
+                            {...register("pokemonType", { required: false })}
+                            placeholder="Pokemon type"
+                            className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3"
+                        />
+                        <button  type="submit" className="w-[50px] h-[40px] flex justify-center items-center">
+                            <FaSearch className="h-[40px] w-[20px] text-slate-500 hover:text-slate-950"/>
+                        </button>
+                    </form>  
+                    <form onSubmit={handleSubmit(onSubmitReset)}>
+                        <button type="submit" className="w-[330px] h-[40px] border-[3px] rounded hover:border-slate-950">Reset all</button>
+                    </form>
                 </div>
                 <div className="w-full h-16 absolute bottom-0 left-0 flex justify-center items-center">
                     <div className='w-[300px] flex justify-center items-center text-[30px]'>
@@ -139,16 +124,3 @@ const formFilterPokemon = ({getFilterId, getFilterName, getFilterWeakness}) =>{
 }
 
 export default formFilterPokemon
-
-/*
-                    <div>
-                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon name'/>
-                    </div>
-                    <div>
-                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon id'/>
-                    </div>
-                    <div>
-                        <input className="w-[300px] h-[40px] border-[3px] rounded justify-center items-center pl-3" placeholder='Pokemon weakness'/>
-                    </div>
-
-*/

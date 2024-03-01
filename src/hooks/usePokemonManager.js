@@ -1,5 +1,4 @@
 'use client'
-
 import { useState } from 'react'
 import PokemonData from '../db/pokemon.json'
 
@@ -22,7 +21,9 @@ const apiPokemonManager = () => {
    const filterWeakness = (weakness) => {
       console.log(weakness)
       let lowercase = weakness.toLowerCase()
-      let filtered = PokemonData.filter((pokemon) => pokemon.weakness.toString().toLowerCase() === lowercase)
+      let filtered = PokemonData.filter((pokemon) => 
+         pokemon.weakness.some((t) => t.toLowerCase() === lowercase),
+      )
       setListPokemons(filtered)
    }
 
@@ -38,9 +39,7 @@ const apiPokemonManager = () => {
    const showAll = () => {
       setListPokemons(PokemonData)
    }
-
    return {listPokemons, filterId, filterName, filterType, filterWeakness, showAll}
-   
 }
 
 export default apiPokemonManager

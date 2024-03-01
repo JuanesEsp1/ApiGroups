@@ -19,7 +19,7 @@ const lilita = Lilita_One({
    display: 'swap',
 })
 
-const HeaderApis = ({ data, getFilterId, getFilterName, getFilterWeakness}) => {
+const HeaderApis = ({ data, getFilterId, getFilterName, getFilterWeakness, getFilterType, showAll}) => {
    return (
       <div className={`w-full h-20 ${data.colorBack}`}>
          <div className="w-full h-full flex justify-between items-center">
@@ -41,7 +41,7 @@ const HeaderApis = ({ data, getFilterId, getFilterName, getFilterWeakness}) => {
                      <IoMenu className=" text-5xl text-white " />
                   </SheetTrigger>
                   <SheetContent>
-                       <FormFilterPokemon  close={SheetClose} getFilterId={getFilterId} getFilterName={getFilterName} getFilterWeakness={getFilterWeakness}  /> 
+                       <FormFilterPokemon  close={SheetClose} getFilterId={getFilterId} getFilterName={getFilterName} getFilterWeakness={getFilterWeakness} getFilterType={getFilterType} showAll={showAll}  /> 
                   </SheetContent>
                </Sheet>
             </div>

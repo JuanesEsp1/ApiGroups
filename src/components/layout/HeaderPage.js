@@ -2,7 +2,8 @@ import BtnRoute from '../customs/btns/BtnRoute.js'
 import { IoMenu } from 'react-icons/io5'
 import Image from 'next/image'
 import Logo from '../../../public/img/Codelab.png'
-import Logo2 from '../../../public/img/Codelab2.png'
+import codelabLogo2 from "../../../public/img/codelabLogo.svg"
+import codelab from "../../../public/img/codelab.svg"
 
 const HeaderPage = () => {
    let apis = {
@@ -27,15 +28,15 @@ const HeaderPage = () => {
             <div className="px-[26px]">
                <Image
                   className="hidden sm:block"
-                  src={Logo}
-                  width={350}
+                  src={codelab}
+                  width={245}
                   height={450}
                   alt="Picture of the author"
                />
                <Image
                   className="sm:hidden"
-                  src={Logo2}
-                  width={80}
+                  src={codelabLogo2}
+                  width={45}
                   height={450}
                   alt="Picture of the author"
                />
@@ -55,12 +56,3 @@ const HeaderPage = () => {
 }
 
 export default HeaderPage
-
-/*
-<BtnDirection icon="cloud" title="Apis" dir="/" />
-                  <BtnDirection
-                     icon="users"
-                     title="Developers"
-                     dir="developers"
-                  />
-*/
