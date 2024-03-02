@@ -1,8 +1,8 @@
 import BtnRoute from '../customs/btns/BtnRoute.js'
 import { IoMenu } from 'react-icons/io5'
 import Image from 'next/image'
-import Logo from '../../../public/img/Codelab.png'
-import Logo2 from '../../../public/img/Codelab2.png'
+import codelabLogo from "../../../public/img/codelab.svg"
+import codelabLogo2 from "../../../public/img/codelabLogo.svg"
 
 const HeaderPage = () => {
    let apis = {
@@ -27,15 +27,15 @@ const HeaderPage = () => {
             <div className="px-[26px]">
                <Image
                   className="hidden sm:block"
-                  src={Logo}
-                  width={350}
+                  src={codelabLogo}
+                  width={230}
                   height={450}
                   alt="Picture of the author"
                />
                <Image
                   className="sm:hidden"
-                  src={Logo2}
-                  width={80}
+                  src={codelabLogo2}
+                  width={44}
                   height={450}
                   alt="Picture of the author"
                />
